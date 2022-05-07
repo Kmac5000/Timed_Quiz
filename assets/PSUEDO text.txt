@@ -1,0 +1,21 @@
+Create a timed test that stores high scores.
+high scores are compiled to compare with class.
+
+
+1. When I click the start button 
+            A. Timer starts
+            b. a question is presented
+
+2. after question is answered 
+            A. another question is presented
+
+3. when I answer a question wrong
+            A. time is subtracted
+
+4. When all questions are answered
+            A. Game is over
+
+5. When time runs out 
+            A. Game is over
+
+Then player saves initial and scores
