@@ -24,7 +24,7 @@
 
 .startBtn {
     display: flex;
-    position: absolute;
+    position: relative;
     color: aliceblue;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     top: 22rem;
@@ -39,14 +39,47 @@
    
 }
 
+ul {
+    list-style: none;
+}
+
+.questions {
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    top: 28rem;
+    left: 22rem;
+    height:60rem;
+    width: 60rem;
+    border: 10px dashed black;
+}
+
+.quesHead {
+    position: relative;
+    font-size: 5rem;
+}
+
+.ansBox {
+    position: relative;
+    color: aliceblue;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   margin: 2rem;
+    justify-content: center;
+    width: 25rem;
+    color: black;
+    font-size: 75px;
+    background-color: rgb(124, 45, 188);
+    border: 5px solid blue;
+    border-radius: 7%;
+
+}
+
 
 @media screen and (max-width: 500px) {
     .startBtn {
         flex-shrink: 25%;
-        top: 12rem;
-        left: 51px;
-        width: 18rem;
-        font-size: 56px;
+        font-size: 5rem;
     }
 
 
@@ -57,18 +90,28 @@
     }
 
     .topBox h1 {
-        font-size: 3rem;
+        font-size: 4rem;
+    }
+
+    .questions {
+        left: 0;
+        flex-shrink: 25%;
     }
 }    
 
     @media  screen and (max-width: 840px) {
         .topBox {
-            left: 3rem;
+            left: 1rem;
             width: 58rem;
         }
 
         .startBtn {
-            left: 20rem;
+            left: 18rem;
+        }
+
+        .questions {
+            left: 0;
+
         }
         
     }
