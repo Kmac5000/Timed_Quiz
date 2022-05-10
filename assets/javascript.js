@@ -38,7 +38,7 @@ var questions = [ // array of objects
 
 
 // 
-var questionEl = document.querySelector("questions");
+let questionEl = document.querySelector(".quesHead");
 
 
 var ansBtn1 = document.querySelector("#answer1")
