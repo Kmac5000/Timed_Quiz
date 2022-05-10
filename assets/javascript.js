@@ -41,30 +41,36 @@ var questions = [ // array of objects
 let questionEl = document.querySelector(".quesHead");
 
 
-var ansBtn1 = document.querySelector("#answer1")
-var ansBtn2 = document.querySelector("#answer2")
-var ansBtn3 = document.querySelector("#answer3")
-var ansBtn4 = document.querySelector("#answer4")
+var ansBtn1 = document.querySelector("#answer1");
+var ansBtn2 = document.querySelector("#answer2");
+var ansBtn3 = document.querySelector("#answer3");
+var ansBtn4 = document.querySelector("#answer4");
 
 
 
-function setQuestion(id) {
+
+
+function setAnswer(id) {
     if (id < questions.length) {
         questionEl.textContent = questions[id].question;
         ansBtn1.textContent = questions[id].answers[0];
         ansBtn2.textContent = questions[id].answers[1];
         ansBtn3.textContent = questions[id].answers[2];
         ansBtn4.textContent = questions[id].answers[3];
+        
+    } else {
+
     }
 }
 
 function startQuiz() {
     // introEl.style.display = "none";
-    // questionsEl.style.display = "block";
+    questionEl.style.display = "block";
     questionCount = 0;
 
-    // setTime();
-    setQuestion(questionCount);
+    
+    setAnswer(questionCount);
+    
 }
 
 
