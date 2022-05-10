@@ -36,7 +36,7 @@
     background-color: rgb(124, 45, 188);
     border: 5px solid blue;
     border-radius: 7%;
-   
+
 }
 
 ul {
@@ -50,7 +50,7 @@ ul {
     flex-direction: column;
     top: 28rem;
     left: 22rem;
-    height:60rem;
+    height: 60rem;
     width: 60rem;
     border: 10px dashed black;
 }
@@ -64,7 +64,7 @@ ul {
     position: relative;
     color: aliceblue;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-   margin: 2rem;
+    margin: 2rem;
     justify-content: center;
     width: 25rem;
     color: black;
@@ -97,25 +97,25 @@ ul {
         left: 0;
         flex-shrink: 25%;
     }
-}    
+}
 
-    @media  screen and (max-width: 840px) {
-        .topBox {
-            left: 1rem;
-            width: 58rem;
-        }
-
-        .startBtn {
-            left: 18rem;
-        }
-
-        .questions {
-            left: 0;
-
-        }
-        
+@media screen and (max-width: 840px) {
+    .topBox {
+        left: 1rem;
+        width: 58rem;
     }
 
+    .startBtn {
+        left: 18rem;
+    }
 
-    
-} 
+    .questions {
+        left: 0;
+
+    }
+
+}
+
+
+
+}
