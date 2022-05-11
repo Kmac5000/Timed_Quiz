@@ -43,7 +43,7 @@ ul {
     list-style: none;
 }
 
-.questions {
+.question {
     display: flex;
     position: relative;
     align-items: center;
@@ -68,21 +68,14 @@ ul {
     justify-content: center;
     width: 25rem;
     color: black;
-    font-size: 75px;
+    font-size: 3rem;
     background-color: rgb(124, 45, 188);
     border: 5px solid blue;
     border-radius: 7%;
 
 }
 
-#rightWrong {
-    display: flex;
-    position: relative;
-    color: yellowgreen;
-    background-color: black;
-    height: 30rem;
-    width: 30rem;
-}
+
 
 
 @media screen and (max-width: 500px) {
@@ -102,7 +95,7 @@ ul {
         font-size: 4rem;
     }
 
-    .questions {
+    .question {
         left: 0;
         flex-shrink: 25%;
     }
@@ -118,7 +111,7 @@ ul {
         left: 18rem;
     }
 
-    .questions {
+    .question {
         left: 0;
 
     }
