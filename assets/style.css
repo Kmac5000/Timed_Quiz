@@ -75,6 +75,15 @@ ul {
 
 }
 
+#rightWrong {
+    display: flex;
+    position: relative;
+    color: yellowgreen;
+    background-color: black;
+    height: 30rem;
+    width: 30rem;
+}
+
 
 @media screen and (max-width: 500px) {
     .startBtn {

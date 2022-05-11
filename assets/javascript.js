@@ -1,4 +1,4 @@
-var startBtn = ".startBtn";
+var startBtn = document.querySelector(".startBtn");
 var askQuestion = ".quesHead";
 
 
@@ -37,9 +37,13 @@ var questions = [ // array of objects
 ];
 
 
+
+
+
 // 
 let questionEl = document.querySelector(".quesHead");
-
+let questionCount = 0;
+const rightWrong = document.querySelector("#rightWrong");
 
 var ansBtn1 = document.querySelector("#answer1");
 var ansBtn2 = document.querySelector("#answer2");
@@ -48,7 +52,7 @@ var ansBtn4 = document.querySelector("#answer4");
 
 
 
-
+ 
 
 function setAnswer(id) {
     if (id < questions.length) {
@@ -56,16 +60,33 @@ function setAnswer(id) {
         ansBtn1.textContent = questions[id].answers[0];
         ansBtn2.textContent = questions[id].answers[1];
         ansBtn3.textContent = questions[id].answers[2];
-        ansBtn4.textContent = questions[id].answers[3];
-        
-    } else {
-
-    }
+        ansBtn4.textContent = questions[id].answers[3];   
+    } 
+   
 }
 
+$(".ansBox").on("click",
+    function checkAnswer(event) {
+        event.preventDefault();
+
+
+        
+        if (questions.correctAnswer === event.target.value) {
+            alert("Correct!");
+        } else if (questions.correctAnswer !== event.target.value) {
+            alert("Wrong!");
+        }
+
+        if (questionCount < questions.length) {
+            questionCount++;
+        }
+        // call setQuestion to bring in next question when any ansBtn is clicked
+        setAnswer(questionCount);
+    });
+
 function startQuiz() {
-    // introEl.style.display = "none";
-    questionEl.style.display = "block";
+    // questions.style.display = "none";
+    // questionEl.style.display = "block";
     questionCount = 0;
 
     
@@ -74,6 +95,27 @@ function startQuiz() {
 }
 
 
+// start button event listener
+$(".startBtn").on("click", function () {
+    alert("boom");
+
+});
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 startQuiz()
-console.log(questions)
-console.log(startQuiz)
+
