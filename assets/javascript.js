@@ -2,7 +2,7 @@ var startBtn = $("#game-btn");
 var askQuestion =$(".quesHead");
 var timeEl = $("#timer");
 var scoreList = $("#high-scores");
-var timerText = $("#game-timer");
+var timerText = $("#timer");
 var gameBtn = $(".ansBox");
 var showQuestion = $("#start");
 var ansBtn1 = $("#answer1");
@@ -11,10 +11,11 @@ var ansBtn3 = $("#answer3");
 var ansBtn4 = $("#answer4");
 var questionCount = 0;
 var rightWrong = $("#rightWrong");
+var list = $(".colList")
 
 
-// Object for question, answer, true/false
-var questions = [
+// Object for question, answer, 
+var questAnswers = [
     {
         question: "Wednesday's favorite toy is a:",
         answers: ["stick", "frog", "ball", "carpet square"],
@@ -43,7 +44,7 @@ var questions = [
 ];
 
 // game logic
-var timer = 20;
+var timer = 30;
 var currentIndex = 0;
 
 
@@ -57,14 +58,18 @@ function init() {
     // askQuestion.hide();
 
     renderScores();
-    setAnswer();
+    
 }
 
 // start game ; click start button
 // function
 
 startBtn.on("click", startGame);
+
+
+
 gameBtn.on("click", checkAnswer);
+
 
 
 // start game
@@ -74,16 +79,21 @@ function startGame() {
     ansBtn3.show();
     ansBtn4.show();
     askQuestion.show();
-    timer = 20;
+    
+    setQuestion(questionCount)
+
+    // setQuestion(questionCount);
+    timer = 35;
     score = 0;
     // START TIMER
-    var gameTimer = setInterval(() => {
-        timer--
-        timerText.text("Time Remaining: " + timer)
+   
+    var gameTimer = setInterval(function () {
+        timer--;
+        timerText.text("Time Remaining: " + timer);
 
-        if (timer === 0) {
+        if (timer === 0 || questionCount === questAnswers.length) {
 
-            clearInterval(gameTimer)
+            clearInterval(gameTimer);
             endGame()
         }
 
@@ -91,34 +101,33 @@ function startGame() {
 }
 
 
-function setAnswer(id) {
-    if (id < questions.length) {
-        askQuestion.textContent = questions[id].question;
-        ansBtn1.textContent = questions[id].answers[0];
-        ansBtn2.textContent = questions[id].answers[1];
-        ansBtn3.textContent = questions[id].answers[2];
-        ansBtn4.textContent = questions[id].answers[3];   
+function setQuestion(id) {
+    if (id < questAnswers.length) {
+        askQuestion.textContent = questAnswers[id].question;
+        ansBtn1.textContent = questAnswers[id].answers[0];
+        ansBtn2.textContent = questAnswers[id].answers[1];
+        ansBtn3.textContent = questAnswers[id].answers[2];
+        ansBtn4.textContent = questAnswers[id].answers[3];   
     } 
-   
+    
 }
 
 
 function checkAnswer(event) {
-        event.preventDefault();
-
-
+    event.preventDefault();
+    
         
-        if (questions[questionCount].correctAnswer === event.target.value) {
+        if (questAnswers[questionCount].correctAnswer === event.target.value) {
             alert("Awesome!");
-        } else if (questions[questionCount].correctAnswer !== event.target.value) {
+        } else if (questAnswers[questionCount].correctAnswer !== event.target.value) {
             alert("Not to good!");
         }
 
-        if (questionCount < questions.length) {
+        if (questionCount < questAnswers.length) {
             questionCount++;
         }
         // call setQuestion to bring in next question when any ansBtn is clicked
-        setAnswer(questionCount);
+        setQuestion(questionCount);
     };
 
 
@@ -135,13 +144,13 @@ function endGame() {
     askQuestion.hide();
 
     var initials = prompt("Your score, " + score + " Please enter your initials");
-    var currentScores = JSON.parse(localStorage.getItem("score")) || [];
-    var userObj = {
+    var currentScores = JSON.parse(localStorage.getItem("score")) || []
+    var user = {
         initials,
         score
-    }
+    };
 
-    currentScores.push(userObj)
+    currentScores.push(user)
     localStorage.setItem("score", JSON.stringify(currentScores));
     renderScores();
         
@@ -149,17 +158,21 @@ function endGame() {
 
 function renderScores() {
     var currentScores = JSON.parse(localStorage.getItem("score")) || [];
+    
+    scoreList.push({ score: timer });
+
     scoreList.empty();
     if (scoreList.length === 0) {
         return scoreList.text("No scores yet")
     };
 
     for (let i = 0; i < currentScores.length; i++) {
-        const scoreObj = currentScores[i];
+        var scoreObj = currentScores[i];
         var newLi = $("<li>", {
             class: "list-group-item"
         });
-        newLi.text(scoreObj.initials + " = " + scoreObj.score)
+
+        newLi.text( scoreObj.initials + " = " + scoreObj.score)
         scoreList.append(newLi)
 
 
@@ -169,11 +182,11 @@ function renderScores() {
 
 
 function renderquestion() {
-    questions.attr('src', questions[questionCount])
+    questAnswers.attr('src', questAnswers[questionCount])
 
 }
 
-localStorage.setItem(JSON.stringify(userObj));
+localStorage.setItem(JSON.stringify(scoreObj));
 
 
 // Endgame

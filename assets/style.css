@@ -1,5 +1,5 @@
 * {
-    background-color: aqua;
+    background-color: aqua;0
 }
 
 .topBox {
@@ -72,6 +72,31 @@ ul {
     background-color: rgb(124, 45, 188);
     border: 5px solid blue;
     border-radius: 7%;
+
+}
+
+#timer {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    top: 17rem;
+    left: 84rem;
+    height: 5rem;
+    width: auto;
+    
+    font-size: 2rem;
+    
+}
+
+#high-scores {
+
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    top: 25rem;
+    left:3rem;lon
+    width: auto;
+    font-size: 1rem;
 
 }
 
