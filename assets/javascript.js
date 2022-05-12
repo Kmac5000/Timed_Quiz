@@ -145,7 +145,7 @@ function checkAnswer(event) {
         if (questAnswers[questionCount].correctAnswer === event.target.value) {
             score ++ ;
         } else if (questAnswers[questionCount].correctAnswer !== event.target.value) {
-        
+            timer = timer -5 ;
         }
 
         if (questionCount < questAnswers.length) {
