@@ -40,12 +40,32 @@ var questAnswers = [
         question: "Lorelia is hungry when?",
         answers: ["morning", "afternoon", "both a & b", "none of the above"],
         correctAnswer: "3"
-    }
+    },
+    {
+        question: "Lorelia is hungry when?",
+        answers: ["morning", "afternoon", "both a & b", "none of the above"],
+        correctAnswer: "3"
+    },
+    {
+        question: "What vehicle does Pogo Drive?",
+        answers: ["dump-truck", "car", "wheel burrow", "snow mobile"],
+        correctAnswer: "1"
+    },
+    {
+        question: "What color is watcher?",
+        answers: ["pink", "black", "maroon", "yellow"],
+        correctAnswer: "4"
+    },
+    {
+        question: "Punkin is a...",
+        answers: ["cat", "dog", "turtle", "none of the above"],
+        correctAnswer: "1"
+    },
 ];
 
 // game logic
-var timer = 30;
-var score = 5;
+var timer = 35;
+var score = 0;
 
 
 init()
@@ -123,9 +143,9 @@ function checkAnswer(event) {
     
         
         if (questAnswers[questionCount].correctAnswer === event.target.value) {
-            alert("Awesome!"); score ++ ;
+            score ++ ;
         } else if (questAnswers[questionCount].correctAnswer !== event.target.value) {
-            alert("Not to good!");
+        
         }
 
         if (questionCount < questAnswers.length) {
