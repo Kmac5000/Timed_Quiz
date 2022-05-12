@@ -73,6 +73,11 @@ gameBtn.on("click", checkAnswer);
 
 
 // start game
+
+
+
+// how do I show the answers to the text content
+// and how do I show the answer
 function startGame() {
     ansBtn1.show();
     ansBtn2.show();
@@ -103,11 +108,11 @@ function startGame() {
 
 function setQuestion(id) {
     if (id < questAnswers.length) {
-        askQuestion.textContent = questAnswers[id].question;
-        ansBtn1.textContent = questAnswers[id].answers[0];
-        ansBtn2.textContent = questAnswers[id].answers[1];
-        ansBtn3.textContent = questAnswers[id].answers[2];
-        ansBtn4.textContent = questAnswers[id].answers[3];   
+        askQuestion.text(questAnswers[id].question);
+        ansBtn1.text(questAnswers[id].answers[0]);
+        ansBtn2.text(questAnswers[id].answers[1]);
+        ansBtn3.text(questAnswers[id].answers[2]);
+        ansBtn4.text(questAnswers[id].answers[3]);   
     } 
     
 }
@@ -145,12 +150,12 @@ function endGame() {
 
     var initials = prompt("Your score, " + score + " Please enter your initials");
     var currentScores = JSON.parse(localStorage.getItem("score")) || []
-    var user = {
+    var userObj = {
         initials,
         score
     };
 
-    currentScores.push(user)
+    currentScores.push(userObj)
     localStorage.setItem("score", JSON.stringify(currentScores));
     renderScores();
         
@@ -172,7 +177,10 @@ function renderScores() {
             class: "list-group-item"
         });
 
-        newLi.text( scoreObj.initials + " = " + scoreObj.score)
+        
+        
+        
+        newLi.text(scoreObj.initials + " = " + scoreObj.score)
         scoreList.append(newLi)
 
 
@@ -186,7 +194,7 @@ function renderquestion() {
 
 }
 
-localStorage.setItem(JSON.stringify(scoreObj));
+
 
 
 // Endgame
