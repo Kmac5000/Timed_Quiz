@@ -45,7 +45,7 @@ var questAnswers = [
 
 // game logic
 var timer = 30;
-var currentIndex = 0;
+var score = 5;
 
 
 init()
@@ -87,7 +87,7 @@ function startGame() {
     
     setQuestion(questionCount)
 
-    // setQuestion(questionCount);
+   
     timer = 35;
     score = 0;
     // START TIMER
@@ -123,7 +123,7 @@ function checkAnswer(event) {
     
         
         if (questAnswers[questionCount].correctAnswer === event.target.value) {
-            alert("Awesome!");
+            alert("Awesome!"); score ++ ;
         } else if (questAnswers[questionCount].correctAnswer !== event.target.value) {
             alert("Not to good!");
         }
@@ -131,8 +131,12 @@ function checkAnswer(event) {
         if (questionCount < questAnswers.length) {
             questionCount++;
         }
+        
+        
         // call setQuestion to bring in next question when any ansBtn is clicked
-        setQuestion(questionCount);
+    setQuestion(questionCount);
+    
+        
     };
 
 
