@@ -1,7 +1,7 @@
 var startBtn = $("#game-btn");
 var askQuestion =$(".quesHead");
 var timeEl = $("#timer");
-var scoreList = $("#high-scores");
+var scoreList = $("#scoreList");
 var timerText = $("#timer");
 var gameBtn = $(".ansBox");
 var showQuestion = $("#start");
@@ -12,7 +12,7 @@ var ansBtn4 = $("#answer4");
 var questionCount = 0;
 var rightWrong = $("#rightWrong");
 var list = $(".colList")
-
+var resetScoreBtn = $("#resetScoreBtn")
 
 // Object for question, answer, 
 var questAnswers = [
@@ -22,7 +22,7 @@ var questAnswers = [
         correctAnswer: "3"
     },
     {
-        question: "What color is Lorelia?",
+        question: "What color is Lorelai?",
         answers: ["black", "yellow", "brown", "pink"],
         correctAnswer: "3"
     },
@@ -32,17 +32,17 @@ var questAnswers = [
         correctAnswer: "4"
     },
     {
-        question: "Cletus was..",
+        question: "Cletus is..",
         answers: ["super cuddly", "really big", "my best bud", "all of the above"],
         correctAnswer: "4"
     },
     {
-        question: "Lorelia is hungry when?",
+        question: "Lorelai is hungry when?",
         answers: ["morning", "afternoon", "both a & b", "none of the above"],
         correctAnswer: "3"
     },
     {
-        question: "Lorelia is hungry when?",
+        question: "Lorelai is hungry when?",
         answers: ["morning", "afternoon", "both a & b", "none of the above"],
         correctAnswer: "3"
     },
@@ -60,7 +60,7 @@ var questAnswers = [
         question: "Punkin is a...",
         answers: ["cat", "dog", "turtle", "none of the above"],
         correctAnswer: "1"
-    },
+    }
 ];
 
 // game logic
@@ -89,6 +89,7 @@ startBtn.on("click", startGame);
 
 
 gameBtn.on("click", checkAnswer);
+
 
 
 
@@ -172,7 +173,7 @@ function endGame() {
     ansBtn4.hide();
     askQuestion.hide();
 
-    var initials = prompt("Your score, " + score + " Please enter your initials");
+    var initials = prompt("You got, " + score + " Please enter your initials");
     var currentScores = JSON.parse(localStorage.getItem("score")) || []
     var userObj = {
         initials,
@@ -198,14 +199,12 @@ function renderScores() {
     for (let i = 0; i < currentScores.length; i++) {
         var scoreObj = currentScores[i];
         var newLi = $("<li>", {
-            class: "list-group-item"
+            class: "list-group-item",
+            
         });
-
-        
-        
-        
-        newLi.text(scoreObj.initials + " = " + scoreObj.score)
-        scoreList.append(newLi)
+            
+        newLi.text(scoreObj.initials + " = " + scoreObj.score);
+        scoreList.append(newLi);
 
 
     }
@@ -216,6 +215,13 @@ function renderScores() {
 function renderquestion() {
     questAnswers.attr('src', questAnswers[questionCount])
 
+}
+
+var listGroup = $(".list-group-item")
+resetScoreBtn.on("click", clearScore);
+function clearScore() {
+    localStorage.clear();
+    
 }
 
 
