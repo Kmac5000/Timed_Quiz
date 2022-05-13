@@ -102,7 +102,6 @@ ul {
     width: auto;
     top: 25rem;
     left:3rem;
-    width: auto;
     font-size: 1rem;
     background: var(--colorWhite);
     border: 7px dashed black; 
@@ -198,15 +197,34 @@ ul {
 @media screen and (max-width: 840px) {
     .topBox {
         left: 1rem;
-        width: 58rem;
+        width: 41rem;
+    }
+
+    .topBox h1 {
+        font-size: 5rem;
     }
 
     .startBtn {
-        left: 18rem;
+        left: 9rem;
+    }
+
+    .quesHead {
+        font-size: 3rem;
     }
 
     .question {
         left: 0;
+        width: 42rem;
+
+    }
+
+    #high-scores {
+        top: 90rem;
+    }
+
+    #timer {
+        top: 0rem;
+        left: 13rem;
 
     }
 

@@ -60,11 +60,17 @@ var questAnswers = [
         question: "Punkin is a...",
         answers: ["cat", "dog", "turtle", "none of the above"],
         correctAnswer: "1"
+    },
+    {
+        question: "Turbo is a...",
+        answers: ["cat", "dog", "turtle", "Rascal"],
+        correctAnswer: "1"
     }
+
 ];
 
 // game logic
-var timer = 35;
+var timer = 40;
 var score = 0;
 
 
@@ -75,7 +81,7 @@ function init() {
     ansBtn2.hide();
     ansBtn3.hide();
     ansBtn4.hide();
-    // askQuestion.hide();
+   
 
     renderScores();
     
@@ -109,7 +115,7 @@ function startGame() {
     setQuestion(questionCount)
 
    
-    timer = 35;
+    timer = 40;
     score = 0;
     // START TIMER
    
@@ -118,10 +124,12 @@ function startGame() {
         timerText.text("Time Remaining: " + timer);
 
         if (timer === 0 || questionCount === questAnswers.length) {
-
+            
             clearInterval(gameTimer);
             endGame()
         }
+
+        
 
     }, 1000);
 }
@@ -144,13 +152,14 @@ function checkAnswer(event) {
     
         
         if (questAnswers[questionCount].correctAnswer === event.target.value) {
-            score ++ ;
+            score++ ;
         } else if (questAnswers[questionCount].correctAnswer !== event.target.value) {
             timer = timer -5 ;
         }
 
         if (questionCount < questAnswers.length) {
             questionCount++;
+            
         }
         
         
@@ -166,12 +175,13 @@ function checkAnswer(event) {
 
 function endGame() {
     console.log("game over");
-    timerText.text("Time remaining: 0");
+    timerText.text("");
     ansBtn1.hide();
     ansBtn2.hide();
     ansBtn3.hide();
     ansBtn4.hide();
-    askQuestion.hide();
+    askQuestion.text("Game Over");
+    
 
     var initials = prompt("You got, " + score + " Please enter your initials");
     var currentScores = JSON.parse(localStorage.getItem("score")) || []
@@ -189,7 +199,7 @@ function endGame() {
 function renderScores() {
     var currentScores = JSON.parse(localStorage.getItem("score")) || [];
     
-    scoreList.push({ score: timer });
+    scoreList.push({ score });
 
     scoreList.empty();
     if (scoreList.length === 0) {
