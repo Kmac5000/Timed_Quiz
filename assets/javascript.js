@@ -64,7 +64,7 @@ var questAnswers = [
     {
         question: "Turbo is a...",
         answers: ["cat", "dog", "turtle", "Rascal"],
-        correctAnswer: "1"
+        correctAnswer: "3"
     }
 
 ];
@@ -181,6 +181,7 @@ function endGame() {
     ansBtn3.hide();
     ansBtn4.hide();
     askQuestion.text("Game Over");
+    questionCount = 0;
     
 
     var initials = prompt("You got, " + score + " Please enter your initials");
@@ -201,7 +202,7 @@ function renderScores() {
     
     scoreList.push({ score });
 
-    scoreList.empty();
+    scoreList.innerHTML = "";
     if (scoreList.length === 0) {
         return scoreList.text("No scores yet")
     };
@@ -228,11 +229,10 @@ function renderquestion() {
 }
 
 var listGroup = $(".list-group-item")
-resetScoreBtn.on("click", clearScore);
-function clearScore() {
+resetScoreBtn.on("click", function() {
     localStorage.clear();
-    
-}
+    scoreList.innerHTML = "";
+});
 
 
 
